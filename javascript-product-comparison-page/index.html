@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        td>img {
+            width: 90%;
+            height: 220px;
+            object-fit: contain;
+        }
+    </style>
+    <title>Comparison</title>
+</head>
+
+<body>
+
+    <h1 class="display-5 my-5 text-center" style="color: rgb(255, 172, 127); font-size: 3rem;font-weight: bolder; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Compare Your Desired Colleges</h1>
+    <div class="container">
+        <div class="col-md-9 mx-auto">
+            <table class="table">
+                <tr class="bg-light">
+                    <th>Select College</th>
+                    <th width="300px">
+                        <select class="form-control" id="select1" onchange="item1(this.value)">
+                            <option value="0">-- Select 1st College --</option>
+                        </select>
+                    </th>
+                    <th width="300px">
+                        <select class="form-control" id="select2" onchange="item2(this.value)">
+                            <option value="0">-- Select 2nd College --</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th>College LOGO</th>
+                    <td>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                            id="img1" alt=" ">
+                    </td>
+                    <td>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                            id="img2" alt=" ">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Year Of Established</th>
+                    <td id="est1">N/A</td>
+                    <td id="est2">N/A</td>
+                </tr>
+                <tr>
+                    <th>NIRF Ranking</th>
+                    <td id="nirf1">N/A</td>
+                    <td id="nirf2">N/A</td>
+                </tr>
+                <tr>
+                    <th>College Affiliation</th>
+                    <td id="aff1">N/A</td>
+                    <td id="aff2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Total Courses</th>
+                    <td id="course1">N/A</td>
+                    <td id="course2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Course Level</th>
+                    <td id="clevel1">N/A</td>
+                    <td id="clevel2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Course Fees</th>
+                    <td id="fee1">N/A</td>
+                    <td id="fee2">N/A</td>
+                </tr>
+                <tr>
+                    <th> Average Placement</th>
+                    <td id="place1">N/A</td>
+                    <td id="place2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Accepted exams</th>
+                    <td id="exam1">N/A</td>
+                    <td id="exam2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Rating & Review</th>
+                    <td id="rr1">N/A</td>
+                    <td id="rr2">N/A</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js "></script>
+</body>
+
+<script src="data.js"></script>
+
+<script>
+  for (var i = 1; i < college.length; i++) {
+    document.getElementById("select1").innerHTML += `
+    <option value="${i}">${college[i].title}</option>
+    `;
+    document.getElementById("select2").innerHTML += `
+    <option value="${i}">${college[i].title}</option>
+    `;
+}
+
+function item1(a){
+    var select2 = document.getElementById("select2").value;
+    if (a != select2){
+        document.getElementById("img1").src = college[a].image
+        document.getElementById("est1").innerHTML = college[a].Established
+        document.getElementById("nirf1").innerHTML = college[a].NIRF
+        document.getElementById("aff1").innerHTML = college[a].Affiliated
+        document.getElementById("course1").innerHTML = college[a].Courses
+        document.getElementById("clevel1").innerHTML = college[a].Level 
+        document.getElementById("fee1").innerHTML = college[a].Fees
+        document.getElementById("place1").innerHTML = college[a].Placement
+        document.getElementById("exam1").innerHTML = college[a].Exams
+        document.getElementById("rr1").innerHTML = college[a].Rating
+
+    }
+    else{
+        document.getElementById("img1").src = college[0].image 
+    }
+ 
+}
+
+function item2(a){
+    var select1 = document.getElementById("select1").value;
+    if(a != select1){
+        document.getElementById("img2").src = college[a].image 
+        document.getElementById("est2").innerHTML = college[a].Established
+        document.getElementById("nirf2").innerHTML = college[a].NIRF
+        document.getElementById("aff2").innerHTML = college[a].Affiliated
+        document.getElementById("course2").innerHTML = college[a].Courses
+        document.getElementById("clevel2").innerHTML = college[a].Level 
+        document.getElementById("fee2").innerHTML = college[a].Fees
+        document.getElementById("place2").innerHTML = college[a].Placement
+        document.getElementById("exam2").innerHTML = college[a].Exams
+        document.getElementById("rr2").innerHTML = college[a].Rating
+    }
+    else{
+        document.getElementById("img2").src = college[0].image 
+    }
+  
+}
+
+
+</script>
+
+</html>
+
